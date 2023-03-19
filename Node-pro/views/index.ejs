@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./partials/head.ejs') %>
+</head>
+<body>
+    <h1>Hello</h1>
+
+    <%- include('./partials/nav.ejs') %>
+
+    <% if (entry.length > 0) { %>
+        <% entry.forEach(entries=> { %>
+
+            <a class="single" href="/entries/<%= entries._id %>" >
+             <h2 class="title" style="color:blue;"> <%= entries.name %></h2>
+             <h3 class="snippet"> <%= entries.expense %></h3>
+            </a>
+            <br>
+           
+
+        <% }) %>
+    <% } else {%>
+        <p>No entries to show</p>
+
+    <% } %>
+</body>
+</html>

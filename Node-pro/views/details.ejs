@@ -1,0 +1,58 @@
+
+<html lang="en">
+<%- include("./partials/head.ejs") %>
+
+<body>
+  <%- include("./partials/nav.ejs") %>
+
+  <div class="details content">
+    <h2 style="color:blue;"><%= entry.name %></h2>
+
+    <div class="content">
+     
+       <h3>Expense made for : <%= entry.expense %></h3>
+       <hr>
+       <h4>Amount spent: <%= entry.amount %></h4>
+       <hr>
+       <h5><%= entry.date %></h5>
+       <hr>
+     
+    </div>
+
+
+    <a class="delete" data-doc="<%= entry._id %>">delete</a> 
+    <br>
+
+  <!-- <div class="container">
+      <a href="/entries/edit/<%= entry._id %>">edit </a>
+  </div>  -->
+    
+   
+  </div>
+
+  <%- include("./partials/footer.ejs") %>
+
+   
+ <script>
+    // javascript code which is used to delete a blog thru a particular id . this code is rendered using the browser on the front-end
+
+    // select the delete button
+    const trashcan = document.querySelector('a.delete');
+
+    // add an event listener to the delete button
+    trashcan.addEventListener('click', (e) => {
+        //endpoint is the var thru which the delete request is sent to the server and also the id of the blog is passed to the server as obtained frm the data-doc attribute of the delete button
+      const endpoint = `/entries/${trashcan.dataset.doc}`;
+      fetch(endpoint, {
+        method: 'DELETE',
+      })
+      .then(response => response.json())
+      .then(data => window.location.href = data.redirect)
+      .catch(err => console.log(err));
+    });
+    
+  </script>
+
+  
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./partials/head.ejs') %>
+</head>
+<body>
+    <%- include('./partials/nav.ejs') %>
+   
+    <form action="/entries/<%= entry._id %>?_method=PUT" method="POST">
+    <!-- <form action="/entries/<%= entry._id %>?_method=PATCH" method="POST"> -->
+     <div class="create-blog content">
+          <label for="name">Name:</label>
+          <input required value="<%= entry.name %>" type="text" id="name" name="name" required>
+          <label for="expense">Expense:</label>
+          <input  required value="<%= entry.expense %>" type="text" id="expense" name="expense" required>
+          <label for="amount">Amount:</label>
+          <input required value="<%= entry.amount %>" type="number" name="amount" required></textarea>
+          <button type="submit">Submit</button>
+        
+     </div>
+    </form>
+
+</body>
+</html>
